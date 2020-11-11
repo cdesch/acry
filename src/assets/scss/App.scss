@@ -2,7 +2,9 @@
 @import './ui/variables';
 
 .App {
+
 	text-align: center;
+
 }
 
 .App-logo {
@@ -33,6 +35,7 @@ body {
 	margin-bottom: 60px;
 	>.container {
 		padding: 60px 15px 0;
+		text-align: left;
 	}
 }
 
@@ -52,3 +55,15 @@ body {
 code {
 	font-size: 80%;
 }
+.main {
+
+	.container {
+		padding: 60px 15px 0;
+		text-align: left;
+	}
+}
+
+//
+//.bg-light {
+//	background-color: $bg-light ;
+//}

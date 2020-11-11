@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <LayoutNav />
-        <div className="wrapper">
           <div className="main">
             <Switch>
               <Switch>
@@ -34,7 +33,6 @@ function App() {
             </Switch>
           </div>
 
-        </div>
 
         <Footer />
       </BrowserRouter>

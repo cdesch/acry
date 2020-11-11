@@ -27,7 +27,7 @@ const Example = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/">home</NavLink>
+              <NavLink href="/">Home</NavLink>
             </NavItem>
 
             <UncontrolledDropdown nav inNavbar>

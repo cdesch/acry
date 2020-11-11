@@ -68,3 +68,52 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+yarn add apollo-boost @apollo/react-hooks 
+
+apollo-boost
+@apollo/react-hooks";
+
+
+query GetPosts {
+    posts {
+      id
+      author
+      body
+    }
+  }
+
+
+
+
+  {
+    acro(id:1) {
+      id
+      definition
+    }
+  }
+  
+  query GetAcros {
+      acros {
+        id
+        definition
+      }
+    }
+    
+   acro (id: 1) {
+        id
+        acronym
+        definition
+        info
+      }  
+      
+      
+   query Acro($id: ID) {
+       acro(id: $id) {
+         id
+         acronym
+         definition
+         info
+       }
+     }   
