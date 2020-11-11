@@ -45,3 +45,25 @@ export const GET_ACRO = gql`
     }
   }
 `;
+
+
+export const SEARCH_ACRO = gql`
+  query Acro($name: String!) {
+    acroSearch(name: $name) {
+      id
+      acronym
+      definition
+      info
+    }
+  }
+`;
+//
+// query  {
+//   acroSearch(name:"AA") {
+//     id
+//     acronym
+//     definition
+//
+//   }
+// }
+

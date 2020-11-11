@@ -83,6 +83,27 @@ var queryType = new graphql.GraphQLObjectType({
         });
       }
     },
+    acroSearch: {
+      type: graphql.GraphQLList(AcroType),
+      args:{
+        name:{
+          type: new graphql.GraphQLNonNull(graphql.GraphQLString)
+        }
+      },
+      resolve: (root, {name}, context, info) => {
+        console.log("here");
+        return new Promise((resolve, reject) => {
+          console.log("name", name);
+          database.all(`SELECT * FROM acros WHERE acronym LIKE '%${name}%';`,[], function(err, rows) {
+            console.log(rows);
+            if(err){
+              reject([]);
+            }
+            resolve(rows);
+          });
+        });
+      }
+    },
     //second query to select by id
     acro:{
       type: AcroType,

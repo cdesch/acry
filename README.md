@@ -118,6 +118,7 @@ query GetPosts {
        }
      }
      
+     
  
  query Posts {
      Posts {
@@ -136,6 +137,15 @@ query GetPosts {
      }
    }       
    
+  query Acros {
+      acros_search (name: "AA"){
+        id
+        acronym
+        definition
+      }
+    }       
+    
+   
  query Acros {
      acro (id: 76){
        id
@@ -144,4 +154,22 @@ query GetPosts {
      }
    }       
    
+   
+ query HeroNameAndFriends($name: acronym) {
+   acros_search(name: $name) {
+     id
+    acronym
+    definition
+     
+   }
+ }  
+  query  {
+    acroSearch(name:"AA") {
+     id
+     acronym
+     definition
+      
+    }
+  }  
+    
     

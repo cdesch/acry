@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import IndexPage from "./pages/index.js";
 import ShowPage from "./pages/show.js";
+import SearchPage from "./pages/search.js";
 import './assets/scss/App.scss';
 
 import LayoutNav from "./components/LayoutNav";
@@ -17,6 +18,10 @@ function App() {
                 <Route
                   path="/index"
                   render={(props) => <IndexPage {...props} />}
+                />
+                <Route
+                  path="/search"
+                  render={(props) => <SearchPage {...props} />}
                 />
 
                 <Route
