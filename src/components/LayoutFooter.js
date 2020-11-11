@@ -5,7 +5,7 @@ const Example = (props) => {
     <div>
       <footer className="footer">
         <div className="container">
-          <span className="text-muted">App INFO</span>
+          <span className="text-muted">App Information</span>
         </div>
       </footer>
     </div>

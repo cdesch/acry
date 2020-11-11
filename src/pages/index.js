@@ -4,9 +4,7 @@ import { Table } from 'reactstrap';
 import data from "../data/acro.json"
 import { Link } from "react-router-dom";
 
-export default class Car extends React.Component {
-
-
+export default class IndexPage extends React.Component {
 
   render() {
     const listItems = data.map((item) =>
@@ -21,6 +19,7 @@ export default class Car extends React.Component {
         <td>{item.info}</td>
       </tr>
     );
+
     return (
       <div>
         <h2>Hi, I am a Index!</h2>
