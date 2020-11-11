@@ -116,4 +116,32 @@ query GetPosts {
          definition
          info
        }
-     }   
+     }
+     
+ 
+ query Posts {
+     Posts {
+       id
+       author
+       title
+     }
+   } 
+   
+
+ query Acros {
+     acros {
+       id
+       acronym
+       definition
+     }
+   }       
+   
+ query Acros {
+     acro (id: 76){
+       id
+       acronym
+       definition
+     }
+   }       
+   
+    

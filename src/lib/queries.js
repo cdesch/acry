@@ -34,18 +34,6 @@ export const GET_ACROS = gql`
     }
 `;
 
-//
-// export const GET_ACRO = gql`
-//   {
-//     acro (id: $id) {
-//       id
-//       acronym
-//       definition
-//       info
-//     }
-//   }
-// `;
-
 
 export const GET_ACRO = gql`
   query Acro($id: ID!) {

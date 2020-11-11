@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { GET_ACRO } from '../lib/queries';
 import { Card, CardBody, CardTitle, CardText, CardHeader, CardSubtitle, Spinner } from "reactstrap";
 
-function Welcome(props) {
+function ShowPage(props) {
 
   console.log("loading");
   let { id } = useParams();
@@ -20,7 +20,7 @@ function Welcome(props) {
 
   return (
     <div className="container p-4">
-      <h4 class="pb-2">
+      <h4 className="pb-2">
         <Link to={`/`}>Acronyms </Link> <span className="text-muted"> > {acro.acronym} - {id}</span>
       </h4>
 
@@ -40,4 +40,4 @@ function Welcome(props) {
   );
 }
 
-export default Welcome;
+export default ShowPage;
