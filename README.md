@@ -172,4 +172,8 @@ query GetPosts {
     }
   }  
     
-    
+npx sequelize-cli model:generate --name Acro --attributes acronym:string,definition:text,info:text,url:text,updated_at:date,created_at:date
+
+npx sequelize-cli seed:generate --name prod-acro
+
+  

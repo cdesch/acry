@@ -1,13 +1,12 @@
 import React from "react";
 import {Link, useParams} from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import {GET_ACRO, SEARCH_ACRO} from '../lib/queries';
+import { SEARCH_ACRO} from '../lib/queries';
 import {Spinner, Table} from "reactstrap";
 
-function IndexPage(props) {
+function SearchPage(props) {
 
   console.log("loading");
-  let { id } = useParams();
   const name = "AA"
   const getPosts = useQuery(SEARCH_ACRO, {
     variables: { name }
@@ -51,4 +50,4 @@ function IndexPage(props) {
   );
 }
 
-export default IndexPage;
+export default SearchPage;
