@@ -30,23 +30,9 @@ const Example = (props) => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
 
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink href="/search">Search</NavLink>
+            </NavItem>
           </Nav>
           <NavbarText>MyApp</NavbarText>
         </Collapse>

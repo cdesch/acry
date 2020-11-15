@@ -1,53 +1,93 @@
-import React from "react";
-import {Link, useParams} from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
-import { SEARCH_ACRO} from '../lib/queries';
-import {Spinner, Table} from "reactstrap";
+import React, { Fragment, Component } from "react";
+import Select, { components } from "react-select";
 
-function SearchPage(props) {
+// import Tooltip from '@atlaskit/tooltip';
+// import { components } from 'react-select';
+import AsyncSelect from 'react-select/async';
+import axios from 'axios';
+// import { colourOptions } from '../data';
+const colourOptions = [
+  { value: 'chocolate', label: 'Chocolate', id: "1" },
+  { value: 'strawberry', label: 'Strawberry', id: "2" },
+  { value: 'vanilla', label: 'Vanilla', id: "3" }
+]
 
-  console.log("loading");
-  const name = "AA"
-  const getPosts = useQuery(SEARCH_ACRO, {
-    variables: { name }
-  });
-  if (getPosts.loading) return <Spinner color="dark" />;
-  if (getPosts.error) return `Error! ${getPosts.error}`;
 
-  console.log("data:", getPosts.data);
-
-  const listItems = getPosts.data.acroSearch.map((item) =>
-    <tr key={item.id}>
-      <th scope="row">
-        <Link to={`/acro/${item.id}`}>
-          {item.id}
-        </Link>
-      </th>
-      <td>{item.acronym}</td>
-      <td>{item.definition}</td>
-      <td>{item.info}</td>
-    </tr>
-  );
-
-  return (
-    <div className="container p-4">
-      <h4 className="pb-2">Acronyms</h4>
-      <Table>
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Acronym</th>
-          <th>Definition</th>
-          <th>Info</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        {listItems}
-        </tbody>
-      </Table>
+const formatOptionLabel = ({ value, label, id, acronym, definition }) => (
+  <div style={{ display: "flex" }}>
+    <div>{acronym}</div>
+    <div style={{ marginLeft: "10px", color: "#ccc" }}>
+      {definition} - {id}
     </div>
-  );
-}
+  </div>
+);
 
-export default SearchPage;
+
+const Option = (props) => {
+  // console.log("props", props);
+  return (
+    <Fragment>
+      <components.Option {...props}>{props.children}</components.Option>
+    </Fragment>
+  );
+};
+
+
+const loadOptions = (inputValue, callback) => {
+  // setTimeout(() => {
+  //   callback(filterColors(inputValue));
+  // }, 1000);
+  axios.get('http://localhost:4000/api/v1/search', {
+    params: {
+      q: inputValue
+    }
+  })
+    .then(function (response) {
+      // handle success
+      callback(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+};
+
+export default class SearchPage extends Component {
+  state = { inputValue: '' };
+  handleInputChange = (newValue) => {
+    const inputValue = newValue.replace(/\W/g, '');
+    this.setState({ inputValue });
+    return inputValue;
+  };
+
+  handleChange = (newValue) => {
+    console.log("handleChange", newValue);
+    this.props.history.push(`/acro/${newValue.id}`);
+
+  }
+
+  render() {
+    return (
+      <div className="container p-4">
+        <h4 className="pb-2">Acronyms</h4>
+
+        <pre>inputValue: "{this.state.inputValue}"</pre>
+        <AsyncSelect
+          cacheOptions
+          loadOptions={ loadOptions }
+          defaultOptions
+          onInputChange={this.handleInputChange}
+          onChange={this.handleChange}
+          components={{ Option: Option }}
+          // formatOptionLabel={option => `${option.label} - ${option.value}`}
+          formatOptionLabel={formatOptionLabel}
+
+          // getOptionLabel={({ name }) => name}
+          getOptionLabel={option => option.acronym}
+          getOptionValue={option => option.id}
+
+        />
+      </div>
+    );
+  }
+}

@@ -175,5 +175,9 @@ query GetPosts {
 npx sequelize-cli model:generate --name Acro --attributes acronym:string,definition:text,info:text,url:text,updated_at:date,created_at:date
 
 npx sequelize-cli seed:generate --name prod-acro
+https://blockchain.info/rawaddr/$bitcoin_address
+https://blockchain.info/rawaddr/3999iq2xpb2HY4FDAXp1oskNtVtvmt8i9e
+
+https://blockchain.info/rawtx/$tx_hash
 
   
