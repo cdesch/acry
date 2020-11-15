@@ -24,8 +24,8 @@ app.get('/api/v1/users/:userId', (req, res) => {
 
 // http://localhost:4000/api/v1/search?q=AA
 app.get('/api/v1/search', async (req, res) => {
-  console.log(req.query.q);
-  console.log(req.query);
+  // console.log(req.query.q);
+  // console.log(req.query);
   const acros = await Acro.findAll({
     where: {
       acronym: { [Op.like]: `%${req.query.q}%` }
